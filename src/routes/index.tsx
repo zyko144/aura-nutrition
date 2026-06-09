@@ -102,7 +102,7 @@ function HeroDish() {
           className="absolute -bottom-4 -left-8 glass rounded-2xl px-4 py-3 text-center animate-float-3d"
           style={{ animationDelay: "2s" }}
         >
-          <div className="text-[9px] uppercase tracking-[0.3em] text-gold">Prot.</div>
+          <div className="text-[9px] uppercase tracking-[0.3em] text-gold">L"EXCELLENCE</div>
           <div className="font-serif text-xl">38g</div>
         </div>
       </div>
@@ -213,7 +213,7 @@ function Hero() {
           </motion.div>
           <motion.h1 variants={fadeUp} initial="hidden" animate="show" custom={1}
             className="mt-6 text-5xl md:text-7xl leading-[1.02]">
-            L'art de manger <span className="italic text-gradient-gold">juste</span>,<br/>
+            L'art de manger <span className="italic text-gradient-gold">TOP 1</span>,<br/>
             sculpté par l'IA.
           </motion.h1>
           <motion.p variants={fadeUp} initial="hidden" animate="show" custom={2}
@@ -363,12 +363,12 @@ function Menus() {
           className="flex flex-wrap items-end justify-between gap-6 mb-16"
         >
           <div>
-            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">La carte</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4"></div>
             <h2 className="text-4xl md:text-6xl max-w-2xl leading-tight">
-              Une <span className="italic text-gradient-gold">collection</span> de menus, calibrée pour vous.
+              {"\n"}
             </h2>
           </div>
-          <a className="text-sm tracking-wide text-muted-foreground hover:text-gold transition">Voir la carte complète →</a>
+          <a className="text-sm tracking-wide text-muted-foreground hover:text-gold transition">{"\n"}</a>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 perspective-1000">
@@ -384,28 +384,32 @@ function Menus() {
                 <div className="rounded-2xl p-8 h-full bg-card/60 border border-border backdrop-blur-xl relative overflow-hidden">
                   <div className="absolute -top-24 -right-24 w-56 h-56 rounded-full opacity-30"
                        style={{ background: "radial-gradient(circle, oklch(0.82 0.13 88 / 60%), transparent 70%)" }} />
-                  <div className="text-xs uppercase tracking-[0.25em] text-gold/80">{m.tag}</div>
-                  <h3 className="font-serif text-3xl mt-3 mb-6">{m.name}</h3>
-                  <div className="flex items-baseline gap-2 mb-6">
-                    <span className="text-gradient-gold font-serif text-4xl">{m.price}</span>
-                    <span className="text-muted-foreground text-sm">/ portion</span>
-                  </div>
-                  <div className="grid grid-cols-4 gap-2 text-center text-xs">
-                    {[
-                      ["KCAL", m.kcal],
-                      ["PROT", `${m.p}g`],
-                      ["GLUC", `${m.c}g`],
-                      ["LIPI", `${m.f}g`],
-                    ].map(([l, v]) => (
-                      <div key={l} className="glass rounded-lg py-3">
-                        <div className="text-gold tracking-widest">{l}</div>
-                        <div className="font-serif text-lg text-foreground mt-1">{v}</div>
+                  {m.name === "Le Matinal" ? null : (
+                    <>
+                      <div className="text-xs uppercase tracking-[0.25em] text-gold/80">{m.name === "Le Souverain" ? "\n" : m.tag}</div>
+                      <h3 className="font-serif text-3xl mt-3 mb-6">{m.name === "Le Souverain" ? "\n" : m.name}</h3>
+                      <div className="flex items-baseline gap-2 mb-6">
+                        <span className="text-gradient-gold font-serif text-4xl">{m.name === "Le Souverain" ? "\n" : m.price}</span>
+                        <span className="text-muted-foreground text-sm">{"\n"}</span>
                       </div>
-                    ))}
-                  </div>
-                  <button className="mt-8 w-full py-3 rounded-full border border-gold/40 text-gold hover:bg-gradient-gold hover:text-primary-foreground hover:border-transparent transition">
-                    Composer ce menu
-                  </button>
+                      <div className="grid grid-cols-4 gap-2 text-center text-xs">
+                        {[
+                          ["\n", m.name === "Le Souverain" ? "\n\n\n" : m.kcal],
+                          ["\n", m.name === "Le Souverain" ? "\n" : `${m.p}g`],
+                          ["\n", m.name === "Le Souverain" ? "\n" : `${m.c}g`],
+                          ["\n", m.name === "Le Souverain" ? "\n" : `${m.f}g`],
+                        ].map(([l, v], idx) => (
+                          <div key={idx} className="glass rounded-lg py-3">
+                            <div className="text-gold tracking-widest">{l}</div>
+                            <div className="font-serif text-lg text-foreground mt-1">{v}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <button className="mt-8 w-full py-3 rounded-full border border-gold/40 text-gold hover:bg-gradient-gold hover:text-primary-foreground hover:border-transparent transition">
+                        {m.name === "Le Souverain" ? "" : "Composer ce menu"}
+                      </button>
+                    </>
+                  )}
                 </div>
               </Tilt>
             </motion.div>
