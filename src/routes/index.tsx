@@ -1,6 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import heroDish from "@/assets/hero-dish.jpg";
+import dinner1 from "@/assets/dinner-1.jpg";
+import dinner2 from "@/assets/dinner-2.jpg";
+import dinner3 from "@/assets/dinner-3.jpg";
+import dinner4 from "@/assets/dinner-4.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,9 +29,9 @@ const fadeUp: Variants = {
   }),
 };
 
-function Cursor3DSphere() {
+function HeroDish() {
   const ref = useRef<HTMLDivElement>(null);
-  const [r, setR] = useState({ x: -12, y: 18 });
+  const [r, setR] = useState({ x: -6, y: 8 });
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
       const el = ref.current;
@@ -36,7 +41,7 @@ function Cursor3DSphere() {
       const cy = rect.top + rect.height / 2;
       const dx = (e.clientX - cx) / window.innerWidth;
       const dy = (e.clientY - cy) / window.innerHeight;
-      setR({ x: -dy * 24, y: dx * 32 });
+      setR({ x: -dy * 14, y: dx * 18 });
     };
     window.addEventListener("mousemove", onMove);
     return () => window.removeEventListener("mousemove", onMove);
@@ -44,50 +49,101 @@ function Cursor3DSphere() {
 
   return (
     <div ref={ref} className="perspective-1000 w-full h-full flex items-center justify-center">
+      {/* Outer halo */}
       <div
-        className="relative preserve-3d transition-transform duration-300 ease-out"
-        style={{ transform: `rotateX(${r.x}deg) rotateY(${r.y}deg)`, width: 360, height: 360 }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+        style={{
+          width: 520,
+          height: 520,
+          background:
+            "radial-gradient(circle, oklch(0.82 0.13 88 / 22%), transparent 65%)",
+        }}
+      />
+      <div
+        className="relative preserve-3d transition-transform duration-500 ease-out animate-float-3d"
+        style={{ transform: `rotateX(${r.x}deg) rotateY(${r.y}deg)` }}
       >
-        {/* Rotating ring of facets — pure CSS 3D */}
-        <div className="absolute inset-0 preserve-3d animate-spin-slow">
-          {Array.from({ length: 14 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute left-1/2 top-1/2 w-24 h-72 -ml-12 -mt-36 rounded-full opacity-80"
-              style={{
-                transform: `rotateY(${(360 / 14) * i}deg) translateZ(150px)`,
-                background:
-                  "linear-gradient(180deg, oklch(0.88 0.13 92 / 90%), oklch(0.55 0.11 75 / 30%))",
-                boxShadow: "0 0 24px oklch(0.82 0.13 88 / 40%)",
-                filter: "blur(0.3px)",
-              }}
-            />
-          ))}
+        <div
+          className="relative rounded-[2rem] overflow-hidden shadow-luxe border border-gold/30"
+          style={{ width: 380, height: 500 }}
+        >
+          <img
+            src={heroDish}
+            alt="Plats gastronomiques faits maison"
+            width={896}
+            height={1152}
+            className="w-full h-full object-cover"
+          />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(180deg, transparent 55%, oklch(0.13 0.01 260 / 70%))",
+            }}
+          />
+          <div className="absolute inset-0 shimmer opacity-30 pointer-events-none" />
+          <div className="absolute bottom-5 left-5 right-5 glass rounded-2xl px-5 py-3 flex items-center justify-between">
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.3em] text-gold">Fait maison</div>
+              <div className="font-serif text-lg leading-tight">Bowl Signature</div>
+            </div>
+            <div className="text-gradient-gold font-serif text-2xl">★</div>
+          </div>
         </div>
-        {/* Glass core orb */}
+        {/* Floating badge */}
         <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full animate-float-3d"
-          style={{
-            width: 220,
-            height: 220,
-            background:
-              "radial-gradient(circle at 30% 28%, oklch(1 0 0 / 70%), oklch(0.82 0.13 88 / 80%) 35%, oklch(0.4 0.08 75) 75%, oklch(0.18 0.02 260))",
-            boxShadow:
-              "inset -30px -40px 80px oklch(0 0 0 / 55%), inset 20px 20px 60px oklch(1 0 0 / 18%), 0 50px 100px -20px oklch(0.82 0.13 88 / 45%)",
-          }}
-        />
-        {/* Outer halo */}
+          className="absolute -top-6 -right-6 glass rounded-2xl px-4 py-3 text-center animate-float-3d"
+          style={{ animationDelay: "1s" }}
+        >
+          <div className="text-[9px] uppercase tracking-[0.3em] text-gold">Kcal</div>
+          <div className="font-serif text-xl">540</div>
+        </div>
         <div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{
-            width: 420,
-            height: 420,
-            background:
-              "radial-gradient(circle, oklch(0.82 0.13 88 / 18%), transparent 60%)",
-          }}
-        />
+          className="absolute -bottom-4 -left-8 glass rounded-2xl px-4 py-3 text-center animate-float-3d"
+          style={{ animationDelay: "2s" }}
+        >
+          <div className="text-[9px] uppercase tracking-[0.3em] text-gold">Prot.</div>
+          <div className="font-serif text-xl">38g</div>
+        </div>
       </div>
     </div>
+  );
+}
+
+const GALLERY = [dinner1, dinner2, dinner3, dinner4];
+
+function DinnerGallery() {
+  const loop = [...GALLERY, ...GALLERY, ...GALLERY];
+  return (
+    <section className="relative py-10 overflow-hidden border-y border-border/60">
+      <div className="absolute inset-y-0 left-0 w-32 z-10 pointer-events-none"
+           style={{ background: "linear-gradient(90deg, var(--background), transparent)" }} />
+      <div className="absolute inset-y-0 right-0 w-32 z-10 pointer-events-none"
+           style={{ background: "linear-gradient(-90deg, var(--background), transparent)" }} />
+      <div className="flex gap-6 w-max" style={{ animation: "gallery-scroll 40s linear infinite" }}>
+        {loop.map((src, i) => (
+          <div
+            key={i}
+            className="relative w-[320px] h-[220px] rounded-2xl overflow-hidden border border-gold/20 shadow-luxe shrink-0 group"
+          >
+            <img
+              src={src}
+              alt={`Dîner luxe ${i + 1}`}
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 pointer-events-none"
+                 style={{ background: "linear-gradient(180deg, transparent 60%, oklch(0.13 0.01 260 / 65%))" }} />
+            <div className="absolute bottom-3 left-4 text-xs uppercase tracking-[0.25em] text-gold/90">
+              Signature
+            </div>
+          </div>
+        ))}
+      </div>
+      <style>{`@keyframes gallery-scroll { from { transform: translateX(0) } to { transform: translateX(-33.333%) } }`}</style>
+    </section>
   );
 }
 
@@ -191,7 +247,7 @@ function Hero() {
           transition={{ duration: 1.2, ease: EASE, delay: 0.2 }}
           className="h-[500px] relative"
         >
-          <Cursor3DSphere />
+          <HeroDish />
         </motion.div>
       </motion.div>
 
@@ -485,6 +541,7 @@ function Index() {
            style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")" }} />
       <Nav />
       <Hero />
+      <DinnerGallery />
       <Features />
       <Menus />
       <Pricing />
