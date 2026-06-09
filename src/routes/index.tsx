@@ -213,7 +213,7 @@ function Hero() {
           </motion.div>
           <motion.h1 variants={fadeUp} initial="hidden" animate="show" custom={1}
             className="mt-6 text-5xl md:text-7xl leading-[1.02]">
-            L'art de manger <span className="italic text-gradient-gold">juste</span>,<br/>
+            L'art de manger <span className="italic text-gradient-gold">TOP 1</span>,<br/>
             sculpté par l'IA.
           </motion.h1>
           <motion.p variants={fadeUp} initial="hidden" animate="show" custom={2}
@@ -363,12 +363,12 @@ function Menus() {
           className="flex flex-wrap items-end justify-between gap-6 mb-16"
         >
           <div>
-            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">La carte</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4"></div>
             <h2 className="text-4xl md:text-6xl max-w-2xl leading-tight">
-              Une <span className="italic text-gradient-gold">collection</span> de menus, calibrée pour vous.
+              {"\n"}
             </h2>
           </div>
-          <a className="text-sm tracking-wide text-muted-foreground hover:text-gold transition">Voir la carte complète →</a>
+          <a className="text-sm tracking-wide text-muted-foreground hover:text-gold transition">{"\n"}</a>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 perspective-1000">
