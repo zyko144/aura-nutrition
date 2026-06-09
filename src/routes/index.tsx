@@ -121,7 +121,7 @@ function Nav() {
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.8, ease: EASE }}
       className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[min(1100px,94%)]"
     >
       <div className="glass rounded-full px-6 py-3 flex items-center justify-between">
@@ -188,7 +188,7 @@ function Hero() {
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          transition={{ duration: 1.2, ease: EASE, delay: 0.2 }}
           className="h-[500px] relative"
         >
           <Cursor3DSphere />
@@ -250,7 +250,7 @@ function Features() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, ease: EASE }}
           className="max-w-2xl"
         >
           <div className="text-xs uppercase tracking-[0.3em] text-gold mb-4">L'expérience</div>
@@ -266,7 +266,7 @@ function Features() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.8, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.8, delay: i * 0.08, ease: EASE }}
             >
               <Tilt>
                 <div className="glass rounded-2xl p-10 h-full relative overflow-hidden group">
@@ -303,7 +303,7 @@ function Menus() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, ease: EASE }}
           className="flex flex-wrap items-end justify-between gap-6 mb-16"
         >
           <div>
@@ -322,7 +322,7 @@ function Menus() {
               initial={{ opacity: 0, y: 60, rotateX: -10 }}
               whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 1, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 1, delay: i * 0.12, ease: EASE }}
             >
               <Tilt>
                 <div className="rounded-2xl p-8 h-full bg-card/60 border border-border backdrop-blur-xl relative overflow-hidden">
@@ -390,7 +390,7 @@ function Pricing() {
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.9, delay: i * 0.1, ease: EASE }}
               className={`relative rounded-2xl p-10 ${p.hl ? "bg-gradient-to-b from-card to-secondary border border-gold/40 shadow-luxe scale-[1.03]" : "glass"}`}
             >
               {p.hl && (
@@ -431,7 +431,7 @@ function CTA() {
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1, ease: EASE }}
         className="max-w-5xl mx-auto rounded-3xl p-14 md:p-20 text-center relative overflow-hidden glass shadow-luxe"
       >
         <div className="absolute inset-0"
