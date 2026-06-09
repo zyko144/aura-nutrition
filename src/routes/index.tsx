@@ -206,7 +206,7 @@ function Hero() {
              style={{ animation: "marquee 35s linear infinite" }}>
           {Array.from({ length: 2 }).map((_, k) => (
             <div key={k} className="flex gap-16">
-              <span>Carrefour</span><span>·</span><span>Monoprix</span><span>·</span>
+              <span>Carrefour</span><span>·</span><span>MONOPRIX</span><span>·</span>
               <span>Uber Eats</span><span>·</span><span>Deliveroo</span><span>·</span>
               <span>La Belle Vie</span><span>·</span><span>Picard</span><span>·</span>
               <span>Frichti</span><span>·</span>
